@@ -1,34 +1,34 @@
-from cities import cities_list
+from data.cities import cities_list
 
-cities_set = {city["name"] for city in cities_list}
-computer_city = None
+города_множество = {город["name"] for город in cities_list}
+город_компьютера = None
 
 while True:
 
-    user_city = input("Введите город: ")
+    город_пользователя = input("Введите город: ")
 
-    if user_city == "стоп":
+    if город_пользователя == "стоп":
         print("Вы проиграли!")
         break
-    elif user_city in cities_set:
+    elif город_пользователя in города_множество:
         print("Город найден!")
     else:
         print("Город не найден!")
         print("Вы проиграли!")
         break
 
-    if computer_city and computer_city[-1].lower() != user_city[0].lower():
+    if город_компьютера and город_компьютера[-1].lower() != город_пользователя[0].lower():
         print("Вы проиграли!")
         break
 
-    cities_set.remove(user_city)
+    города_множество.remove(город_пользователя)
 
-    for city in cities_set:
-        if city[0].lower() == user_city[-1]:
-            computer_city = city
-            print(f"Компьютер: {computer_city}")
-            cities_set.remove(city)
+    for город in города_множество:
+        if город[0].lower() == город_пользователя[-1].lower():
+            город_компьютера = город
+            print(f"Компьютер: {город_компьютера}")
+            города_множество.remove(город)
             break
     else:
-        print("вы выиграли!")
+        print("Вы выиграли!")
         break
